@@ -17,6 +17,7 @@ exports = module.exports = function (app) {
 	// Views
 	app.get('/', routes.views.index);
 	app.all('/signup', keystone.security.csrf.middleware.init, routes.views.signup);
+	app.get('/p/:user', routes.views.userprofile);
 	app.all('/signout', keystone.security.csrf.middleware.init, routes.views.signout);
 	app.all('/account', middleware.requireUser, routes.views.account);
 	app.all('/signin', keystone.security.csrf.middleware.init, routes.views.signin);

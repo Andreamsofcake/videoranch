@@ -12,7 +12,9 @@ User.add({
 	email: { type: Types.Email, initial: true, required: true, index: true },
 	username: {type: String, initial: true, required: true, index: true, unique: true },
 	mobile_phone: { type: Number, initial: true, index: true },
+	image: { type: Types.CloudinaryImage },
 	password: { type: Types.Password, initial: true, required: true },
+	profile: { type: Types.Html, wysiwyg: true, height: 150 }
 }, 'Permissions', {
 	isAdmin: { type: Boolean, label: 'Can access Keystone', index: true },
 });

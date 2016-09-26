@@ -42,6 +42,7 @@ keystone.Email.defaults.templateEngine = require('handlebars');
 
 keystone.set('nav', {
 	users: 'users',
+	galleries: 'galleries'
 });
 
 keystone.start();

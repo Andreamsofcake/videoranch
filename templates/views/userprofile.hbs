@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="container">
+    <h1>{{data.user.username}}</h1>
+  </div>
+  <div class="container">
+    {{#if data.user.image.url}}<img class="img-responsive img-thumbnail" height=140 width=140 alt="Responsive image" src="{{{data.user.image.exifurl}}}">{{/if}}
+  </div>
+  <br>
+  <div class="container">
+    <div class="container">
+      {{{data.user.profile}}}
+    </div>
+    <div class="container">
+      <div class="userposts">
+        {{#each data.userposts.results}}
+          <div class="userpost">
+            <h2><a href="/p/{{author.username}}/{{slug}}">{{{title}}}</a></h2>
+            {{#if image.public_id}}
+              {{#if image.exifurl}}
+              <img class="img-responsive" alt="Responsive image" style="width:20%;" src="{{{image.exifurl}}}">
+              {{else}}
+              <img class="img-responsive" alt="Responsive image" style="width:20%;" src="{{{image.url}}}">
+              {{/if}}
+            {{/if}}
+            {{#if media.url}}
+              <img class="img-responsive" alt="Responsive image" style="width:20%;" src={{{ media.thumbnailUrl}}}>
+            {{/if}}
+            <p class="lead text-muted">{{{usercategoryList categories prefix="Posted in "}}}
+            </p>
+            <p>{{{content.brief}}}</p>
+            <p class="read-more"><a href="/p/{{author.username}}/{{slug}}">Read more...</a></p>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>
