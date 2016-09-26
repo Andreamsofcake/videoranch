@@ -1,0 +1,26 @@
+{{!< default}}
+<div class="container">
+	<div class="main-container">
+    <div id="player">
+      <script>
+
+        var width = (window.innderWidth/3) * 2;
+        var height = (400/800) * window.innerHeight;
+
+        var player = new Clappr.Player({
+            source: 'https://videoranch-hlslive.gdlcdn.com/default/VR3Dlive/test.m3u8',
+            poster: 'http://i.imgur.com/bGyD9yV.jpg',
+            mute: true,
+            height: height,
+            width: width,
+            plugins: []
+          });
+        var playerElement = document.getElementById("player");
+        player.attachTo(playerElement);
+      </script>
+
+    </div>
+</div>
+<div>
+	<a href="/signup" style="margin-right: 10px" class="btn btn-lg btn-success">Sign Up</a>
+</div>

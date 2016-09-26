@@ -1,0 +1,68 @@
+{{!< default}}
+<script src="//tinymce.cachefly.net/4.2/tinymce.min.js"></script>
+<script>tinymce.init({selector:'textarea'});</script>
+<div class="container">
+  <div class="container">
+    <a class="btn btn-success" href="/p/{{data.user.username}}">View Profile</a>
+    {{#if data.tierTwo._id}}
+      <a class="btn btn-warning" href="/tiertwo/summary/{{data.user._id}}">Add ZaZZZ</a>
+    {{else}}
+      <a class="btn btn-warning" href="/tiertwo/{{data.user._id}}">Add Payment Method</a>
+    {{/if}}
+  </div>
+  <br>
+  <div class="container">
+    <div class="row">
+    <div class="col-sm-8 col-md-9">
+      <form method="post" enctype="multipart/form-data">
+        <input type="hidden" name="action" value="edit-userprofile">
+        <input type="hidden" name="_id" value="{{data.user._id}}" >
+        <div class="container">
+          <h1>Profile</h1>
+        </div>
+        <div class="form-group {{#if validationErrors.name}}has-error{{/if}}">
+          <label>Name</label>
+          <input type="text" name="name.full"  class="form-control" value="{{data.user.name.first}} {{data.user.name.last}}">
+        </div>
+        <div class="form-group {{#if validationErrors.name}}has-error{{/if}}">
+          <label>Username</label>
+          <input type="text" name="username"  class="form-control" value="{{data.user.username}}">
+        </div>
+        <div class="form-group {{#if validationErrors.email}}has-error{{/if}}">
+          <label>Email</label>
+          <input type="email" name="email" class="form-control" value="{{data.user.email}}">
+        </div>
+        <div class="form-group {{#if validationErrors.mobile_phone}}has-error{{/if}}">
+          <label>Phone</label>
+          <input type="mobile_phone" name="mobile_phone" class="form-control" value="{{data.user.mobile_phone}}">
+        </div>
+        <div class="field-type-cloudinaryimage form-group {{#if validationErrors.image}}has-error{{/if}}">
+        <label>Avatar</label>
+          <input type="file" name="image_upload" class="form-control" size="40" >
+          {{#if data.user.image.public_id}}
+            {{#if data.user.image.exifurl}}
+            <img class="img-responsive" alt="Responsive image" style="width:10%;" src="{{{data.user.image.exifurl}}}">
+            {{else}}
+            <img class="img-responsive" alt="Responsive image" style="width:10%;" src="{{{data.user.image.url}}}">
+            {{/if}}
+          {{/if}}
+          </imput>
+        </div>
+        <div class="form-group {{#if validationErrors.profile}}has-error{{/if}} ">
+          <label>Profile</label>
+          <textarea name="profile" placeholder="" rows="4" class="form-control">{{data.user.profile}}</textarea>
+        </div>
+        <div class="form-group {{#if validationErrors.password}}has-error{{/if}}">
+          <label>Password</label>
+          <input type="password" name="password" class="form-control" autocomplete="off" value="">
+        </div>
+        <div class="form-group {{#if validationErrors.email}}has-error{{/if}}">
+          <input type="password" name="password_confirm" placeholder="Confirm new password" value="" autocomplete="off" class="form-control">
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
